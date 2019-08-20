@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="luongvo.com.mycalculator">
+    package="com.lab.nilaani">
 
     <application
         android:allowBackup="true"

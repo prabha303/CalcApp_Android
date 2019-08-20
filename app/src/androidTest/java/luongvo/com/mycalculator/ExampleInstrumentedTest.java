@@ -1,4 +1,4 @@
-package luongvo.com.mycalculator;
+package com.lab.nilaani;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("luongvo.com.mycalculator", appContext.getPackageName());
+        assertEquals("com.lab.nilaani", appContext.getPackageName());
     }
 }

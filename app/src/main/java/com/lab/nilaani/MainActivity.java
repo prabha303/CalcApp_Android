@@ -1,4 +1,4 @@
-package luongvo.com.mycalculator;
+package com.lab.nilaani;
 
 import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
@@ -8,28 +8,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
-    Button button0;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
-    Button button8;
-    Button button9;
-    Button buttonAdd;
-    Button buttonSubstract;
-    Button buttonMul;
-    Button buttonDiv;
-    Button buttonClear;
-    Button buttonEqual;
-    String result;
-    String tmp;
-    String operator;
-    TextView resultTextView;
+    Button button0,button1,button2,button3,button4,button5,button6,button7,button8,button9;
+    Button buttonAdd,buttonSubstract,buttonMul,buttonDiv,buttonClear,buttonEqual;
+    String result,tmp,operator;
+    TextView resultTextView,textview_temp;
 
 
     @Override
@@ -105,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textview_temp.setText("");
+                tmp = "";
+                operator = "";
                 onClearButtonClicked();
             }
         });
@@ -135,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                textview_temp.setText("");
                 onEqualButtonClicked();
             }
         });
@@ -142,10 +132,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onEqualButtonClicked() {
-        int res = 0;
+        Double res = 0.0;
+        result = "";
         try {
-            int number = Integer.valueOf(tmp);
-            int number2 = Integer.valueOf(resultTextView.getText().toString());
+            Double number = Double.parseDouble(tmp);
+            Double number2 = Double.parseDouble(resultTextView.getText().toString());
             switch (operator) {
                 case "+":
                     res = number + number2;
@@ -160,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
                     res = number * number2;
                     break;
             }
-            result = String.valueOf(res);
+            result = String.valueOf(new DecimalFormat("##.##").format(res));
             resultTextView.setText(result);
         }
         catch (Exception e) {
@@ -170,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void onOperatorButtonClicked(String operator) {
         tmp = resultTextView.getText().toString();
+
+        textview_temp.setText(resultTextView.getText().toString());
+
         onClearButtonClicked();
         this.operator = operator;
     }
@@ -177,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
     private void onClearButtonClicked() {
         result = "";
         resultTextView.setText("");
+
     }
 
     private void onNumberButtonClicked(String pos) {
@@ -186,24 +181,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initControl() {
-        button0 = (Button)findViewById(R.id.button0);
-        button1 = (Button)findViewById(R.id.button1);
-        button2 = (Button)findViewById(R.id.button2);
-        button3 = (Button)findViewById(R.id.button3);
-        button4 = (Button)findViewById(R.id.button4);
-        button5 = (Button)findViewById(R.id.button5);
-        button6 = (Button)findViewById(R.id.button6);
-        button7 = (Button)findViewById(R.id.button7);
-        button8 = (Button)findViewById(R.id.button8);
-        button9 = (Button)findViewById(R.id.button9);
-
-        buttonAdd = (Button)findViewById(R.id.buttonAdd);
-        buttonClear = (Button)findViewById(R.id.buttonClear);
-        buttonSubstract = (Button)findViewById(R.id.buttonSub);
-        buttonMul = (Button)findViewById(R.id.buttonMul);
-        buttonDiv = (Button)findViewById(R.id.buttonDiv);
-        buttonEqual = (Button)findViewById(R.id.buttonEqual);
-
-        resultTextView = (TextView)findViewById(R.id.text_view_result);
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
+        button8 = findViewById(R.id.button8);
+        button9 = findViewById(R.id.button9);
+        buttonAdd = findViewById(R.id.buttonAdd);
+        buttonClear = findViewById(R.id.buttonClear);
+        buttonSubstract = findViewById(R.id.buttonSub);
+        buttonMul = findViewById(R.id.buttonMul);
+        buttonDiv = findViewById(R.id.buttonDiv);
+        buttonEqual = findViewById(R.id.buttonEqual);
+        resultTextView = findViewById(R.id.text_view_result);
+        textview_temp = findViewById(R.id.text_temp);
     }
 }

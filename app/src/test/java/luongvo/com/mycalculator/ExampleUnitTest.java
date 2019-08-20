@@ -1,4 +1,4 @@
-package luongvo.com.mycalculator;
+package com.lab.nilaani;
 
 import org.junit.Test;
 
